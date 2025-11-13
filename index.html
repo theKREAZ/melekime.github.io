@@ -1,76 +1,1409 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="game.html">
-    <link rel="shortcut icon" type="image/jpg" href="İmage-Gif/icon.png"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src=""></script>
-    <title>Kreaz</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bir Hanimefendi İcin</title>
+    <link rel="icon" type="image/png" href="icon.png.png" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Righteous&display=swap');
+    
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(-45deg, #667eea, #764ba2, #1c1c1c, #0d0d0d);
+      background-size: 400% 400%;
+      color: #f5f5f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+      transition: background 0.5s ease;
+      position: relative;
+      overflow-x: hidden;
+      animation: gradientShift 15s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Particle Canvas */
+    #particle-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Content Wrapper */
+    .content {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      text-align: center;
+      color: #c7c7ff;
+      margin-bottom: 0.5rem;
+      letter-spacing: 1px;
+      animation: fadeIn 1s ease;
+    }
+
+    .quote {
+      font-size: 1rem;
+      color: #aaa;
+      margin-bottom: 2rem;
+      text-align: center;
+      opacity: 0.8;
+      animation: fadeIn 1.2s ease;
+      max-width: 500px;
+      line-height: 1.6;
+    }
+
+    .todo-container {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 450px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(6px);
+      animation: slideUp 0.8s ease;
+    }
+
+    .input-wrapper {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+
+    input[type="text"] {
+      flex: 1;
+      min-width: 150px;
+      padding: 0.7rem;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #f5f5f5;
+      outline: none;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+
+    input[type="text"]:focus {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    input[type="text"]::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    button {
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      background: #c7c7ff;
+      color: #000;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    button:hover {
+      background: #a5a5ff;
+      transform: scale(1.05);
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      max-height: 400px;
+      overflow-y: auto;
+      padding-right: 0.5rem;
+    }
+
+    ul::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ul::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 3px;
+    }
+
+    ul::-webkit-scrollbar-thumb {
+      background: rgba(199, 199, 255, 0.4);
+      border-radius: 3px;
+    }
+
+    ul::-webkit-scrollbar-thumb:hover {
+      background: rgba(199, 199, 255, 0.6);
+    }
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(199, 199, 255, 0.08) 0%, rgba(118, 75, 162, 0.05) 100%);
+      margin-bottom: 0.8rem;
+      padding: 1rem 1.2rem;
+      border-radius: 10px;
+      border-left: 3px solid #c7c7ff;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      user-select: none;
+      word-break: break-word;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      position: relative;
+    }
+
+    li:hover {
+      background: linear-gradient(135deg, rgba(199, 199, 255, 0.15) 0%, rgba(118, 75, 162, 0.1) 100%);
+      border-left-color: #a5a5ff;
+      transform: translateX(4px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: #c7c7ff;
+      border-radius: 10px 0 0 10px;
+    }
+
+    li.completed {
+      text-decoration: line-through;
+      opacity: 0.6;
+      background: linear-gradient(135deg, rgba(199, 199, 255, 0.04) 0%, rgba(118, 75, 162, 0.02) 100%);
+      border-left-color: #888;
+    }
+
+    li.completed::before {
+      background: #888;
+    }
+
+    li.completed::after {
+      content: '✓';
+      position: absolute;
+      right: 3.5rem;
+      color: #4CAF50;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    li span {
+      flex: 1;
+      font-size: 0.95rem;
+      color: #f5f5f5;
+      word-wrap: break-word;
+    }
+
+    li button {
+      background: transparent;
+      border: none;
+      color: #f5f5f5;
+      font-size: 1.3rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 0.5rem;
+      margin-left: 0.8rem;
+      flex-shrink: 0;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    li button:hover {
+      color: #ff6b6b;
+      background: rgba(255, 107, 107, 0.1);
+      transform: scale(1.1);
+    }
+
+    li button:active {
+      transform: scale(0.95);
+    }
+
+    /* Motivation Popup */
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(199, 199, 255, 0.1);
+      border: 1px solid rgba(199, 199, 255, 0.3);
+      padding: 2rem;
+      border-radius: 12px;
+      color: #c7c7ff;
+      font-size: 1.2rem;
+      text-align: center;
+      z-index: 1000;
+      animation: popupAppear 0.5s ease, popupDisappear 0.5s ease 2.5s forwards;
+      max-width: 90%;
+      box-shadow: 0 0 30px rgba(199, 199, 255, 0.2);
+      backdrop-filter: blur(6px);
+    }
+
+    @keyframes popupAppear {
+      from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+
+    @keyframes popupDisappear {
+      from {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+      to {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+      }
+    }
+
+    /* Music Player */
+    .music-player {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    .music-player:hover .volume-control {
+      opacity: 1;
+      width: 120px;
+      margin-right: 0.5rem;
+    }
+
+    .music-toggle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #c7c7ff;
+      color: #000;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(199, 199, 255, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .music-toggle::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.3);
+      height: 0%;
+      transition: height 0.2s ease;
+      border-radius: 0 0 50% 50%;
+      pointer-events: none;
+    }
+
+    .music-toggle:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 25px rgba(199, 199, 255, 0.6);
+    }
+
+    .music-toggle.playing {
+      animation: pulse 1.5s ease infinite;
+    }
+
+    /* Volume Control */
+    .volume-control {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      opacity: 0;
+      width: 0;
+      overflow: hidden;
+      transition: opacity 0.3s ease, width 0.3s ease, margin-right 0.3s ease;
+    }
+
+    .volume-slider {
+      width: 70px;
+      height: 4px;
+      -webkit-appearance: none;
+      appearance: none;
+      background: rgba(199, 199, 255, 0.3);
+      outline: none;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+
+    .volume-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 12px;
+      height: 12px;
+      background: #c7c7ff;
+      cursor: pointer;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(199, 199, 255, 0.5);
+    }
+
+    .volume-slider::-moz-range-thumb {
+      width: 12px;
+      height: 12px;
+      background: #c7c7ff;
+      cursor: pointer;
+      border-radius: 50%;
+      border: none;
+      box-shadow: 0 0 10px rgba(199, 199, 255, 0.5);
+    }
+
+    .volume-label {
+      font-size: 0.9rem;
+      color: #c7c7ff;
+      min-width: 30px;
+      text-align: right;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 0 15px rgba(199, 199, 255, 0.4);
+      }
+      50% {
+        box-shadow: 0 0 25px rgba(199, 199, 255, 0.8);
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    footer {
+      margin-top: 3rem;
+      font-size: 0.95rem;
+      color: #c7c7ff;
+      text-align: center;
+      position: relative;
+      z-index: 30;
+      padding: 0.5rem 0;
+    }
+
+    footer p {
+      margin: 0;
+      color: #e9e9ff;
+      font-weight: 600;
+      text-shadow: 0 3px 10px rgba(0,0,0,0.6);
+      background: rgba(255,255,255,0.02);
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 8px;
+      backdrop-filter: blur(4px);
+    }
+
+    /* Sticky Notes */
+    .sticky-notes-container {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 14;
+      top: 0;
+      left: 0;
+    }
+
+    .sticky-note-wrapper {
+      position: fixed;
+      pointer-events: all;
+      user-select: none;
+    }
+
+    .sticky-note {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #FFB6C1 0%, #FFD4E5 100%);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 8px;
+      padding: 32px 12px 12px 12px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.85rem;
+      color: #333;
+      box-shadow: -2px 2px 8px rgba(0, 0, 0, 0.3), 
+                  inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      cursor: grab;
+      resize: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      overflow-y: auto;
+      overflow-x: hidden;
+      box-sizing: border-box;
+    }
+
+    .sticky-note:hover {
+      transform: scale(1.05);
+      box-shadow: -4px 4px 12px rgba(0, 0, 0, 0.4), 
+                  inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+
+    .sticky-note:active {
+      cursor: grabbing;
+    }
+
+    .sticky-note.right-side {
+      background: linear-gradient(135deg, #87CEEB 0%, #B0E0E6 100%);
+    }
+
+    .sticky-note::placeholder {
+      color: rgba(51, 51, 51, 0.5);
+    }
+
+    .sticky-note::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .sticky-note::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 2px;
+    }
+
+    .sticky-note-controls {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      height: 24px;
+      display: flex;
+      gap: 4px;
+      justify-content: flex-end;
+      align-items: center;
+      z-index: 200;
+      pointer-events: all;
+      padding: 4px;
+    }
+
+    .sticky-note-btn {
+      background: rgba(255, 255, 255, 0.8);
+      border: none;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      padding: 0;
+      cursor: pointer;
+      font-size: 12px;
+      color: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .sticky-note-btn:hover {
+      background: rgba(200, 200, 200, 0.95);
+      transform: scale(1.15);
+    }
+
+    .sticky-note-close:hover {
+      background: rgba(255, 100, 100, 0.9);
+      color: white;
+    }
+
+    .sticky-note-expand:hover {
+      background: rgba(100, 150, 255, 0.9);
+      color: white;
+    }
+
+    /* Responsive for mobile */
+    @media (max-width: 800px) {
+      .sticky-note-wrapper {
+        width: 120px !important;
+        height: 120px !important;
+      }
+
+      .sticky-note {
+        font-size: 0.75rem;
+        padding: 28px 8px 8px 8px;
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 600px) {
+      body {
+        padding: 1rem;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .quote {
+        font-size: 0.9rem;
+      }
+
+      .todo-container {
+        padding: 1.5rem;
+        max-width: 100%;
+      }
+
+      .input-wrapper {
+        flex-direction: column;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        min-width: unset;
+      }
+
+      button {
+        width: 100%;
+      }
+
+      .music-player {
+        bottom: 1rem;
+        right: 1rem;
+      }
+
+      .music-toggle {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+      }
+
+      .music-player:hover .volume-control {
+        width: 100px;
+      }
+
+      .popup {
+        padding: 1.5rem;
+        font-size: 1rem;
+        max-width: 85%;
+      }
+    }
+    /* Site credit + Instagram link container */
+    .site-brand {
+      position: fixed;
+      left: 1rem;
+      bottom: 1rem;
+      z-index: 120;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      align-items: flex-start;
+      pointer-events: auto;
+      transform-origin: left bottom;
+    }
+
+    .site-link {
+      font-family: 'Righteous', 'Nunito', sans-serif;
+      font-size: 0.95rem;
+      color: rgba(199, 199, 255, 0.95);
+      text-decoration: none;
+      background: rgba(255,255,255,0.02);
+      padding: 4px 10px;
+      border-radius: 8px;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.28);
+      transition: transform 0.12s ease, background 0.12s ease;
+    }
+
+    .site-link:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .site-credit {
+      color: rgba(199, 199, 255, 0.95);
+      font-size: 1rem;
+      font-family: 'Righteous', 'Nunito', sans-serif;
+      letter-spacing: 0.6px;
+      background: rgba(255,255,255,0.02);
+      padding: 6px 12px;
+      border-radius: 10px;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.28);
+      text-transform: none;
+    }
+
+    /* When the link is placed inside the credit, keep it inline and subtle */
+    .site-credit .site-link {
+      background: transparent;
+      padding: 0;
+      box-shadow: none;
+      border-radius: 0;
+      color: rgba(199, 199, 255, 0.95);
+      text-decoration: none;
+    }
+
+    .site-credit .site-link:hover {
+      transform: none;
+      text-decoration: underline;
+      background: transparent;
+    }
+
+    @media (max-width: 600px) {
+      .site-brand { left: 0.6rem; bottom: 0.6rem; }
+      .site-credit { font-size: 0.8rem; }
+      .site-link { font-size: 0.82rem; }
+    }
+  </style>
 </head>
 <body>
-<header>
-   <div class="navbar">
-    <div class="logo"><a href="index.html"><h3>theKREAZ</h3></a></div> 
-    <ul class="links">
-        <li><a href="index.html" target="_self">Home</a></li> 
-        <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <a href="game/game.html" class="action_btn" target="_blank" >Play</a>     <!--important-->       
-    <div class="toggle_btn">
-        <i class="fa-solid fa-bars" style="color: aliceblue;"></i>
+  <!-- Particle Canvas for lo-fi atmosphere -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- Sticky Notes Container -->
+  <div class="sticky-notes-container" id="sticky-notes-container"></div>
+
+  <!-- Main Content -->
+  <div class="content">
+    <h1>🌙 Sen Yaparsin Ben Inaniyorum</h1>
+    <div class="quote" id="quote"></div>
+
+    <div class="todo-container">
+      <div class="input-wrapper">
+        <input type="text" id="todo-input" placeholder="Bugün ne yapiyoz✍️" />
+        <button id="add-btn">Ekle</button>
+      </div>
+
+      <ul id="todo-list"></ul>
     </div>
-   </div>
 
-   <div class="dropdown_menu">
-    <li><a href="index.html" target="_self">Home</a></li>
-    <li><a href="contact.html">Contact</a></li>
-    <li><a href="game/game.html" class="action_btn" target="_blank" onclick="">Play</a></li>
-   </div>
-</header>
+    <footer>
+      <p>melek 💜 oguz</p>
+    
+    </footer>
+  </div>
 
-<main>
-    <section id="hero">
-        <div class="games">
-            <h1><br /><br />Welcome</h1>
-            <p><br />owner by <a href="https://t.me/TheKreaz" target="_blank" style="text-decoration:none;"><b>@kreaz</b></a></p>
-        </div>
-    </section>
-</main>
-<script>
-    const toggle_btn = document.querySelector('.toggle_btn')
-    const toggle_btnIcon = document.querySelector('.toggle_btn i')
-    const dropDownMenu = document.querySelector('.dropdown_menu')
+  <!-- Music Player -->
+  <div class="music-player">
+    <div class="volume-control">
+      <input type="range" id="volume-slider" class="volume-slider" min="0" max="100" value="15" />
+      <span class="volume-label" id="volume-label">15</span>
+    </div>
+    <button class="music-toggle" id="music-toggle" title="Müzik Aç/Kapat">🎵</button>
+    <audio id="lofi-music" loop autoplay preload="auto">
+      <source src="https://cdn.pixabay.com/download/audio/2025/06/18/audio_59e7bd8f8d.mp3?filename=lofi-relax-beat-loop-bpm-88-eb-major-ii-v-i-361752.mp3" type="audio/mpeg">
+    </audio>
+  </div>
 
-    toggle_btn.onclick = function () {
-        dropDownMenu.classList.toggle('open')
-        const isOpen = dropDownMenu.classList.contains('open')
+  <!-- Site credit (bottom-left) with Instagram link inside name -->
+  <div class="site-brand">
+    <div class="site-credit">Made by <a class="site-link" href="https://www.instagram.com/oguzctnkyy" target="_blank" rel="noopener noreferrer"><strong>kreaz</strong></a></div>
+  </div>
 
-        toggle_btnIcon.classList = isOpen
-        ? 'fa-solid fa-xmark'
-        : 'fa-solid fa-bars'
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+  <script>
+    // ============================================
+    // PARTICLE EFFECTS - Lo-Fi Atmosphere
+    // ============================================
+    const canvas = document.getElementById('particle-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    // Particle class for floating effect
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 0.5;
+        this.speedY = Math.random() * 0.5 + 0.2;
+        this.opacity = Math.random() * 0.5 + 0.2;
+        this.color = Math.random() > 0.5 ? 'rgba(199, 199, 255' : 'rgba(255, 255, 255';
+      }
+
+      update() {
+        this.y -= this.speedY;
+        if (this.y < 0) {
+          this.y = canvas.height;
+          this.x = Math.random() * canvas.width;
+        }
+      }
+
+      draw() {
+        ctx.fillStyle = `${this.color}, ${this.opacity})`;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
     }
-</script>
 
-<footer class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="footer-col">
-                <ul>
-                    <li><a href="#"><h4>the KREAZ</h4></a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <div class="social-links">
-                    <a href="https://t.me/TheKreaz"><i class="fab fa-telegram"></i></a>
-                    <a href="https://github.com/theKREAZ"><i class="fab fa-github"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
+    // Initialize particles
+    function initParticles() {
+      particles = [];
+      for (let i = 0; i < 50; i++) {
+        particles.push(new Particle());
+      }
+    }
+
+    // Animate particles
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      particles.forEach(particle => {
+        particle.update();
+        particle.draw();
+      });
+
+      requestAnimationFrame(animateParticles);
+    }
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    initParticles();
+    animateParticles();
+
+    // ============================================
+    // FIREBASE (Realtime Database) - Public Notes
+    // Replace the placeholder values with your Firebase project's config.
+    // Instructions: create a Firebase project, enable Realtime Database,
+    // set rules to allow public read/write (or configure auth as needed),
+    // then paste your project's config below.
+    // ============================================
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      databaseURL: "https://YOUR_PROJECT_ID.firebaseio.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT_ID.appspot.com",
+      messagingSenderId: "SENDER_ID",
+      appId: "APP_ID"
+    };
+
+    try {
+      if (!firebase.apps?.length) {
+        firebase.initializeApp(firebaseConfig);
+      }
+      var db = firebase.database();
+      var publicNotesRef = db.ref('publicNotes/notes');
+    } catch (err) {
+      console.warn('Firebase init failed (replace config placeholders):', err);
+    }
+
+    // ============================================
+// STICKY NOTES SYSTEM - FIXED INPUT ISSUE
+// ============================================
+const notesContainer = document.getElementById('sticky-notes-container');
+let notes = [];
+
+// Firebase listener (optional)
+if (typeof publicNotesRef !== 'undefined') {
+  publicNotesRef.on('value', snapshot => {
+    const data = snapshot.val();
+    if (!data) notes = [];
+    else if (Array.isArray(data)) notes = data;
+    else notes = Object.keys(data).map(k => data[k]);
+    renderNotes();
+  }, err => console.warn('Firebase read failed', err));
+} else {
+  notes = JSON.parse(localStorage.getItem('stickyNotes')) || [];
+}
+
+let draggedNoteId = null;
+let dragOffsetX = 0;
+let dragOffsetY = 0;
+
+// === DATA MANAGEMENT ===
+function saveNotes() {
+  if (typeof publicNotesRef !== 'undefined') {
+    const obj = {};
+    notes.forEach(n => obj[n.id] = n);
+    publicNotesRef.set(obj).catch(err => console.warn('Firebase write failed', err));
+  } else {
+    localStorage.setItem('stickyNotes', JSON.stringify(notes));
+  }
+}
+
+function getNoteById(id) {
+  return notes.find(n => n.id === id);
+}
+
+function updateNoteData(id, data) {
+  const note = getNoteById(id);
+  if (note) {
+    Object.assign(note, data);
+    saveNotes();
+  }
+}
+
+function deleteNote(id) {
+  notes = notes.filter(n => n.id !== id);
+  saveNotes();
+  renderNotes();
+}
+
+// === POSITIONING ===
+function getInitialPosition(side) {
+  const notesOnSide = notes.filter(n => n.side === side);
+  const normalSize = 150;
+  const baseTop = 140;
+  const stackSpacing = 170;
+
+  if (side === 'left-side') {
+    return { left: 16, top: baseTop + (notesOnSide.length * stackSpacing) };
+  } else {
+    return { left: Math.max(16, window.innerWidth - normalSize - 16), top: baseTop + (notesOnSide.length * stackSpacing) };
+  }
+}
+
+function constrainPosition(left, top, width, height) {
+  const margin = 10;
+  left = Math.max(margin, Math.min(left, window.innerWidth - width - margin));
+  top = Math.max(margin, Math.min(top, window.innerHeight - height - margin));
+  return { left, top };
+}
+
+// === DOM CREATION ===
+function createNoteElement(noteData) {
+  const size = noteData.expanded ? 300 : 150;
+  const { left, top } = constrainPosition(noteData.left, noteData.top, size, size);
+
+  const wrapper = document.createElement('div');
+  wrapper.className = 'sticky-note-wrapper';
+  wrapper.dataset.noteId = noteData.id;
+  wrapper.style.cssText = `
+    left: ${left}px;
+    top: ${top}px;
+    width: ${size}px;
+    height: ${size}px;
+    position: absolute;
+  `;
+
+  const textarea = document.createElement('textarea');
+  textarea.className = `sticky-note ${noteData.side}`;
+  textarea.value = noteData.text;
+  textarea.placeholder = noteData.side === 'left-side' ? 'burayi doldurmayi unutmaa' : 'hey sen burayi doldur';
+
+  // <<< DÜZELTME: Sadece text'i güncelle, render çağırma >>>
+ 
+
+  const controls = document.createElement('div');
+  controls.className = 'sticky-note-controls';
+  controls.style.cssText = `position: absolute; top: 8px; right: 8px;`;
+
+  const expandBtn = document.createElement('button');
+  expandBtn.className = 'sticky-note-btn sticky-note-expand';
+  expandBtn.textContent = noteData.expanded ? '−' : '+';
+  expandBtn.title = noteData.expanded ? 'Küçült' : 'Büyüt';
+  expandBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    updateNoteData(noteData.id, { expanded: !noteData.expanded });
+    renderNotes();
+  });
+
+  const closeBtn = document.createElement('button');
+  closeBtn.className = 'sticky-note-btn sticky-note-close';
+  closeBtn.textContent = '✕';
+  closeBtn.title = 'Sil';
+  closeBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    deleteNote(noteData.id);
+  });
+
+  controls.appendChild(expandBtn);
+  controls.appendChild(closeBtn);
+
+  wrapper.addEventListener('mousedown', (e) => {
+    if (e.target.closest('.sticky-note-btn') || e.target.closest('.sticky-note-controls')) return;
+    draggedNoteId = noteData.id;
+    const rect = wrapper.getBoundingClientRect();
+    dragOffsetX = e.clientX - rect.left;
+    dragOffsetY = e.clientY - rect.top;
+  });
+
+  wrapper.appendChild(textarea);
+  wrapper.appendChild(controls);
+
+  return { wrapper, controls };
+}
+
+// === RENDERING ===
+function renderNotes() {
+  notesContainer.innerHTML = '';
+  notes.forEach(noteData => {
+    const { wrapper } = createNoteElement(noteData);
+    notesContainer.appendChild(wrapper);
+  });
+}
+
+// === DRAG HANDLING ===
+document.addEventListener('mousemove', (e) => {
+  if (!draggedNoteId) return;
+  const wrapper = notesContainer.querySelector(`[data-note-id="${draggedNoteId}"]`);
+  if (!wrapper) return;
+
+  const note = getNoteById(draggedNoteId);
+  if (!note) return;
+
+  const size = note.expanded ? 300 : 150;
+  let left = e.clientX - dragOffsetX;
+  let top = e.clientY - dragOffsetY;
+  const { left: constrainedLeft, top: constrainedTop } = constrainPosition(left, top, size, size);
+
+  wrapper.style.left = constrainedLeft + 'px';
+  wrapper.style.top = constrainedTop + 'px';
+});
+
+document.addEventListener('mouseup', () => {
+  if (draggedNoteId) {
+    const wrapper = notesContainer.querySelector(`[data-note-id="${draggedNoteId}"]`);
+    if (wrapper) {
+      const left = parseInt(wrapper.style.left) || 0;
+      const top = parseInt(wrapper.style.top) || 0;
+      updateNoteData(draggedNoteId, { left, top });
+    }
+    draggedNoteId = null;
+  }
+});
+
+// === ADD NOTE FUNCTION ===
+function addNote(side) {
+  const position = getInitialPosition(side);
+  const newNote = {
+    id: Date.now().toString(),
+    text: '',
+    side: side,
+    left: position.left,
+    top: position.top,
+    expanded: false
+  };
+  notes.push(newNote);
+  saveNotes();
+  renderNotes();
+}
+
+// === INITIALIZATION ===
+renderNotes();
+
+// === CREATE ADD NOTE BUTTONS ===
+const noteButtonsDiv = document.createElement('div');
+noteButtonsDiv.style.cssText = `
+  position: fixed;
+  bottom: 6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  display: flex;
+  gap: 1rem;
+  animation: slideUp 0.8s ease;
+`;
+
+const leftNoteBtn = document.createElement('button');
+leftNoteBtn.textContent = '📝 Pembe Not';
+leftNoteBtn.style.cssText = `
+  padding: 0.6rem 1.2rem;
+  background: #FFB6C1;
+  color: #333;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(255, 182, 193, 0.4);
+`;
+leftNoteBtn.addEventListener('click', () => addNote('left-side'));
+leftNoteBtn.addEventListener('mouseover', function() {
+  this.style.transform = 'scale(1.05)';
+  this.style.boxShadow = '0 4px 12px rgba(255, 182, 193, 0.6)';
+});
+leftNoteBtn.addEventListener('mouseout', function() {
+  this.style.transform = 'scale(1)';
+  this.style.boxShadow = '0 2px 8px rgba(255, 182, 193, 0.4)';
+});
+
+const rightNoteBtn = document.createElement('button');
+rightNoteBtn.textContent = '📝 Mavi Not';
+rightNoteBtn.style.cssText = `
+  padding: 0.6rem 1.2rem;
+  background: #87CEEB;
+  color: #333;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(135, 206, 235, 0.4);
+`;
+rightNoteBtn.addEventListener('click', () => addNote('right-side'));
+rightNoteBtn.addEventListener('mouseover', function() {
+  this.style.transform = 'scale(1.05)';
+  this.style.boxShadow = '0 4px 12px rgba(135, 206, 235, 0.6)';
+});
+rightNoteBtn.addEventListener('mouseout', function() {
+  this.style.transform = 'scale(1)';
+  this.style.boxShadow = '0 2px 8px rgba(135, 206, 235, 0.4)';
+});
+
+noteButtonsDiv.appendChild(leftNoteBtn);
+noteButtonsDiv.appendChild(rightNoteBtn);
+document.body.appendChild(noteButtonsDiv);
+
+
+    // ============================================
+    // MOTIVATION MESSAGES
+    // ============================================
+    const motivationalMessages = [
+
+      "harikasinn",
+      "ne demek yaptin",
+      "bu da bitti biraz mola ver",
+      "oha gercekten yaptin mi"
+    ];
+
+    const pageQuotes = [
+      "sakin ol 80 sayfa sadece bir sayi :)",
+      "melek hanim bugun ne kadar caliscak bakalim",
+      "senin inanilmaz bir gucun ve sevginde varr",
+      "bir adim daha yaklastinn"
+    ];
+
+    // Display random quote on page load
+    function displayRandomQuote() {
+      const quote = pageQuotes[Math.floor(Math.random() * pageQuotes.length)];
+      document.getElementById("quote").textContent = quote;
+    }
+
+    // Show motivation popup
+    function showMotivationPopup() {
+      const message = motivationalMessages[Math.floor(Math.random() * motivationalMessages.length)];
+      const popup = document.createElement('div');
+      popup.classList.add('popup');
+      popup.textContent = message;
+      document.body.appendChild(popup);
+
+      // Remove popup after animation
+      setTimeout(() => popup.remove(), 3000);
+    }
+// ============================================
+    // TO-DO LIST FUNCTIONALITY
+    // ============================================
+// TODO LIST FUNCTIONALITY // ============================================ 
+const input = document.getElementById("todo-input"); 
+const addBtn = document.getElementById("add-btn"); 
+const list = document.getElementById("todo-list"); 
+// Load todos from localStorage
+ let todos = JSON.parse(localStorage.getItem("todos")) || [];
+ function renderTodos() { list.innerHTML = "";
+ if (todos.length === 0) { const emptyMsg = document.createElement("li");
+ emptyMsg.textContent = "Henüz görev eklemedin. Başla! 🚀";
+ emptyMsg.style.textAlign = "center";
+ emptyMsg.style.opacity = "0.6";
+ emptyMsg.style.cursor = "default";
+ emptyMsg.style.background = "transparent";
+ emptyMsg.style.borderLeft = "none";
+ emptyMsg.style.boxShadow = "none";
+ list.appendChild(emptyMsg);
+ return;
+ } todos.forEach((todo, index) => { const li = document.createElement("li");
+ const span = document.createElement("span");
+ span.textContent = todo.text;
+ li.appendChild(span);
+ if (todo.completed) { li.classList.add("completed"); }
+ // Delete button
+ const delBtn = document.createElement("button");
+ delBtn.textContent = "✕";
+ delBtn.title = "Sil";
+ delBtn.addEventListener("click", (e) => { e.stopPropagation();
+ todos.splice(index, 1);
+ saveTodos(); renderTodos();
+ }); 
+// Toggle completion on click 
+li.addEventListener("click", () => { todo.completed = !todo.completed;
+ saveTodos();
+ renderTodos();
+ // Show motivation popup when task is completed 
+if (todo.completed) { showMotivationPopup();
+ } }); li.appendChild(delBtn);
+ list.appendChild(li); });
+ } function saveTodos() { localStorage.setItem("todos", JSON.stringify(todos));
+ } 
+// Add new todo 
+addBtn.addEventListener("click", () => { const text = input.value.trim();
+ if (text === "") return;
+ todos.push({ text, completed: false });
+ saveTodos();
+ renderTodos();
+ input.value = ""; }); 
+// Add todo on Enter key 
+input.addEventListener("keypress", (e) => { if (e.key === "Enter") addBtn.click(); }); 
+// Initial render 
+displayRandomQuote(); 
+renderTodos();
+    
+ // ============================================
+    // LOFI MUSIC PLAYER
+    // ============================================
+    const musicToggle = document.getElementById("music-toggle");
+    const lofiMusic = document.getElementById("lofi-music");
+    const volumeSlider = document.getElementById("volume-slider");
+    const volumeLabel = document.getElementById("volume-label");
+    let isPlaying = false;
+
+    // Ses seviyesini ayarla
+    volumeSlider.addEventListener("input", (e) => {
+      const volume = e.target.value;
+      lofiMusic.volume = volume / 100;
+      volumeLabel.textContent = volume;
+      
+      // Müzik butonunda su seviyesi efekti
+      musicToggle.style.setProperty('--water-level', volume + '%');
+      
+      // Doğrudan pseudo-element'i güncellemek için
+      updateWaterLevel(volume);
+    });
+
+    // Su seviyesi güncellemesi için yardımcı fonksiyon
+    function updateWaterLevel(volume) {
+      // CSS değişkenini güncelle
+      const style = document.createElement('style');
+      style.textContent = `.music-toggle::before { height: ${volume}% !important; }`;
+      
+      // Eski style'ı sil
+      const oldStyle = document.getElementById('water-level-style');
+      if (oldStyle) oldStyle.remove();
+      
+      style.id = 'water-level-style';
+      document.head.appendChild(style);
+    }
+
+    // Başlangıç ses seviyesi (başlangıçta 15)
+    lofiMusic.volume = 0.15;
+    updateWaterLevel(15);
+
+    // Müzik otomatik olarak başladığında başlasın
+    lofiMusic.load();
+    // Try to play immediately, then setup user interaction fallback
+    lofiMusic.play().catch(err => {
+      console.log("Autoplay failed:", err);
+      // Fallback: play on first user interaction
+      document.addEventListener('click', function playOnClick() {
+        lofiMusic.play().catch(e => console.log("Play on click failed:", e));
+        document.removeEventListener('click', playOnClick);
+      }, { once: true });
+    });
+    isPlaying = true;
+
+    // Ses kontrolü
+    volumeSlider.addEventListener("change", () => {
+      updateMusicButtonDisplay();
+    });
+
+    function updateMusicButtonDisplay() {
+      const volume = parseInt(volumeSlider.value);
+      if (volume === 0) {
+        musicToggle.textContent = '✕';
+        musicToggle.title = 'Ses kapalı';
+      } else {
+        musicToggle.textContent = '🎵';
+        musicToggle.title = 'Müzik çalıyor';
+      }
+    }
+
+    // Başlangıçta buton gösterimini ayarla
+    updateMusicButtonDisplay();
+
+    // Buton tıklaması (ses kontrolü)
+    musicToggle.addEventListener("click", () => {
+      const currentVolume = parseInt(volumeSlider.value);
+      if (currentVolume > 0) {
+        volumeSlider.value = 0;
+      } else {
+        volumeSlider.value = 50;
+      }
+      const event = new Event('input', { bubbles: true });
+      volumeSlider.dispatchEvent(event);
+      updateMusicButtonDisplay();
+    });
+
+    // Müzik bittiğinde otomatik olarak baştan başlat
+    lofiMusic.addEventListener("ended", () => {
+      lofiMusic.currentTime = 0;
+      if (isPlaying) {
+        lofiMusic.play().catch(err => console.log("Yeniden oynatma hatası:", err));
+      }
+    });
+
+    // Müzik yüklendiğinde kontrol et
+    lofiMusic.addEventListener("canplay", () => {
+      console.log("Müzik hazır!");
+    });
+
+    lofiMusic.addEventListener("error", () => {
+      console.log("Müzik yüklenemedi. İnternet bağlantısını kontrol et.");
+    });
+    const title = document.querySelector("h1");
+
+// Sticky ve todo list container'ları
+const stickyContainer = document.getElementById("sticky-container");
+const todoContainer = document.getElementById("todo-list-container");
+
+title.addEventListener("click", (e) => {
+  if (e.target.textContent.includes("🌙")) {
+    startProposal();
+  }
+});
+
+function startProposal() {
+  // Sticky ve todo list gizle
+  if (stickyContainer) stickyContainer.style.display = "none";
+  if (todoContainer) todoContainer.style.display = "none";
+
+  // Soruyu ve butonları oluştur
+  const questionDiv = document.createElement("div");
+  questionDiv.id = "proposal-div";
+  questionDiv.style.textAlign = "center";
+  questionDiv.style.marginTop = "100px";
+
+  const question = document.createElement("h2");
+  question.textContent = "Benimle çıkar mısın? 💜";
+  questionDiv.appendChild(question);
+
+  const yesBtn = document.createElement("button");
+  yesBtn.textContent = "Evet";
+  yesBtn.style.fontSize = "20px";
+  yesBtn.style.marginRight = "20px";
+  yesBtn.style.transition = "all 0.3s ease";
+
+  const noBtn = document.createElement("button");
+  noBtn.textContent = "Hayır";
+  noBtn.style.fontSize = "20px";
+  noBtn.style.transition = "all 0.3s ease";
+
+  questionDiv.appendChild(yesBtn);
+  questionDiv.appendChild(noBtn);
+
+  document.body.appendChild(questionDiv);
+
+  // Mesaj kutusu ve yazılar
+  const messages = [
+    "bence yanlis tikladin",
+    "emin misin? 🥺",
+    "saka yapiyor olmalisin! 💔",
+    "NE DEMEK HAYİR!",
+    "bunu sen istedin"
+  ];
+  let messageIndex = 0;
+  let clickCount = 0;
+
+  // Hayır butonuna tıklama
+  noBtn.addEventListener("click", () => {
+    clickCount++;
+
+    // Evet butonunu büyüt
+    const currentSize = parseInt(yesBtn.style.fontSize);
+    yesBtn.style.fontSize = currentSize + 10 + "px";
+
+    // Mesaj kutusunu göster
+   // Mesaj kutusunu göster
+const msg = document.createElement("div");
+msg.className = "message-box";
+msg.innerText = messages[messageIndex];
+msg.style.position = "fixed";
+msg.style.top = "60%"; // Burayı 50%'den 60%'ye aldık
+msg.style.left = "50%";
+msg.style.transform = "translate(-50%, -50%)";
+msg.style.backgroundColor = "rgba(0,0,0,0.7)";
+msg.style.color = "white";
+msg.style.padding = "20px 30px";
+msg.style.borderRadius = "10px";
+msg.style.fontSize = "20px";
+msg.style.zIndex = "9999";
+document.body.appendChild(msg);
+
+    document.body.appendChild(msg);
+
+    setTimeout(() => {
+      msg.remove();
+    }, 2000);
+
+    // Bir sonraki mesajı sıraya al
+    messageIndex = (messageIndex + 1) % messages.length;
+
+    // 5. tıklamada ekranı tamamen kaplasın
+    if (clickCount === 5) {
+      yesBtn.style.position = "fixed";
+      yesBtn.style.top = "0";
+      yesBtn.style.left = "0";
+      yesBtn.style.width = "100vw";
+      yesBtn.style.height = "100vh";
+      yesBtn.style.fontSize = "10vw";
+      yesBtn.style.zIndex = "9999";
+      noBtn.remove();
+    }
+  });
+
+  // Evet butonuna tıklama
+  yesBtn.addEventListener("click", () => {
+    alert("EVET DİCEGİNİ BİLİYODUM ARTİK CİKİYORUZZ");
+  });
+}
+
+  </script>
 </body>
 </html>
