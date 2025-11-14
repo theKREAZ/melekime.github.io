@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bir Hanimefendi İcin</title>
-    <link rel="icon" type="image/png" href="icon.png.png" />
+  <title>Bir Hanimefendi İcin - Enhanced</title>
+  <link rel="icon" type="image/png" href="icon.png.png" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Righteous&display=swap');
     
@@ -97,7 +97,6 @@
       flex-wrap: wrap;
       justify-content: center;
     }
-
 
     input[type="text"] {
       flex: 1;
@@ -256,211 +255,7 @@
       transform: scale(0.95);
     }
 
-    /* Motivation Popup */
-    .popup {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: rgba(199, 199, 255, 0.1);
-      border: 1px solid rgba(199, 199, 255, 0.3);
-      padding: 2rem;
-      border-radius: 12px;
-      color: #c7c7ff;
-      font-size: 1.2rem;
-      text-align: center;
-      z-index: 1000;
-      animation: popupAppear 0.5s ease, popupDisappear 0.5s ease 2.5s forwards;
-      max-width: 90%;
-      box-shadow: 0 0 30px rgba(199, 199, 255, 0.2);
-      backdrop-filter: blur(6px);
-    }
-
-    @keyframes popupAppear {
-      from {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.8);
-      }
-      to {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-      }
-    }
-
-    @keyframes popupDisappear {
-      from {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-      }
-      to {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.8);
-      }
-    }
-
-    /* Music Player */
-    .music-player {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      gap: 0;
-    }
-
-    .music-player:hover .volume-control {
-      opacity: 1;
-      width: 120px;
-      margin-right: 0.5rem;
-    }
-
-    .music-toggle {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: #c7c7ff;
-      color: #000;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 15px rgba(199, 199, 255, 0.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .music-toggle::before {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(0, 0, 0, 0.3);
-      height: 0%;
-      transition: height 0.2s ease;
-      border-radius: 0 0 50% 50%;
-      pointer-events: none;
-    }
-
-    .music-toggle:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 25px rgba(199, 199, 255, 0.6);
-    }
-
-    .music-toggle.playing {
-      animation: pulse 1.5s ease infinite;
-    }
-
-    /* Volume Control */
-    .volume-control {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      opacity: 0;
-      width: 0;
-      overflow: hidden;
-      transition: opacity 0.3s ease, width 0.3s ease, margin-right 0.3s ease;
-    }
-
-    .volume-slider {
-      width: 70px;
-      height: 4px;
-      -webkit-appearance: none;
-      appearance: none;
-      background: rgba(199, 199, 255, 0.3);
-      outline: none;
-      border-radius: 2px;
-      cursor: pointer;
-    }
-
-    .volume-slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 12px;
-      height: 12px;
-      background: #c7c7ff;
-      cursor: pointer;
-      border-radius: 50%;
-      box-shadow: 0 0 10px rgba(199, 199, 255, 0.5);
-    }
-
-    .volume-slider::-moz-range-thumb {
-      width: 12px;
-      height: 12px;
-      background: #c7c7ff;
-      cursor: pointer;
-      border-radius: 50%;
-      border: none;
-      box-shadow: 0 0 10px rgba(199, 199, 255, 0.5);
-    }
-
-    .volume-label {
-      font-size: 0.9rem;
-      color: #c7c7ff;
-      min-width: 30px;
-      text-align: right;
-    }
-
-    @keyframes pulse {
-      0%, 100% {
-        box-shadow: 0 0 15px rgba(199, 199, 255, 0.4);
-      }
-      50% {
-        box-shadow: 0 0 25px rgba(199, 199, 255, 0.8);
-      }
-    }
-
-    /* Animations */
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes slideUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    footer {
-      margin-top: 3rem;
-      font-size: 0.95rem;
-      color: #c7c7ff;
-      text-align: center;
-      position: relative;
-      z-index: 30;
-      padding: 0.5rem 0;
-    }
-
-    footer p {
-      margin: 0;
-      color: #e9e9ff;
-      font-weight: 600;
-      text-shadow: 0 3px 10px rgba(0,0,0,0.6);
-      background: rgba(255,255,255,0.02);
-      display: inline-block;
-      padding: 6px 12px;
-      border-radius: 8px;
-      backdrop-filter: blur(4px);
-    }
-
-    /* Sticky Notes */
+    /* Enhanced Sticky Notes System */
     .sticky-notes-container {
       position: fixed;
       width: 100%;
@@ -475,6 +270,12 @@
       position: fixed;
       pointer-events: all;
       user-select: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .sticky-note-wrapper:hover {
+      transform: scale(1.02);
+      z-index: 1000;
     }
 
     .sticky-note {
@@ -491,26 +292,16 @@
                   inset 0 1px 0 rgba(255, 255, 255, 0.5);
       cursor: grab;
       resize: none;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
       white-space: pre-wrap;
       word-wrap: break-word;
       overflow-y: auto;
       overflow-x: hidden;
       box-sizing: border-box;
-    }
-
-    .sticky-note:hover {
-      transform: scale(1.05);
-      box-shadow: -4px 4px 12px rgba(0, 0, 0, 0.4), 
-                  inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      transition: all 0.2s ease;
     }
 
     .sticky-note:active {
       cursor: grabbing;
-    }
-
-    .sticky-note.right-side {
-      background: linear-gradient(135deg, #87CEEB 0%, #B0E0E6 100%);
     }
 
     .sticky-note::placeholder {
@@ -572,7 +363,413 @@
       color: white;
     }
 
-    /* Responsive for mobile */
+    /* Color picker for sticky notes */
+    .color-picker {
+      position: fixed;
+      bottom: 6rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 50;
+      display: flex;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1rem;
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .color-option {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .color-option:hover {
+      transform: scale(1.1);
+      border-color: rgba(255, 255, 255, 0.8);
+    }
+
+    .color-option.selected {
+      border-color: #fff;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+
+    .color-option::after {
+      content: '✓';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 14px;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .color-option.selected::after {
+      opacity: 1;
+    }
+
+    .add-note-btn {
+      padding: 0.8rem 1.5rem;
+      background: #c7c7ff;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-left: 1rem;
+    }
+
+    .add-note-btn:hover {
+      background: #a5a5ff;
+      transform: scale(1.05);
+    }
+
+    /* Enhanced Music Player */
+    .music-player {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 100;
+    }
+
+    .music-player-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #c7c7ff 0%, #a5a5ff 100%);
+      color: #000;
+      border: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 20px rgba(199, 199, 255, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .music-player-icon:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 30px rgba(199, 199, 255, 0.6);
+    }
+
+    .music-player-icon.playing {
+      animation: pulse 1.5s ease infinite;
+    }
+
+    .music-controls {
+      position: absolute;
+      bottom: 70px;
+      right: 0;
+      background: rgba(0, 0, 0, 0.9);
+      border-radius: 12px;
+      padding: 1rem;
+      width: 300px;
+      transform: translateY(10px);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .music-controls.active {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .control-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .control-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(199, 199, 255, 0.2);
+      border: none;
+      color: #c7c7ff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      font-size: 1.2rem;
+    }
+
+    .control-btn:hover {
+      background: rgba(199, 199, 255, 0.3);
+      transform: scale(1.1);
+    }
+
+    .play-btn {
+      width: 50px;
+      height: 50px;
+      background: #c7c7ff;
+      color: #000;
+      font-size: 1.5rem;
+    }
+
+    .seek-bar {
+      flex: 1;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 2px;
+      cursor: pointer;
+      position: relative;
+      margin: 0 0.5rem;
+    }
+
+    .seek-progress {
+      height: 100%;
+      background: #c7c7ff;
+      border-radius: 2px;
+      width: 0%;
+      transition: width 0.1s ease;
+    }
+
+    .time-display {
+      font-size: 0.8rem;
+      color: #aaa;
+      min-width: 40px;
+    }
+
+    .volume-control {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .volume-slider {
+      flex: 1;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.2);
+      outline: none;
+      border-radius: 2px;
+      cursor: pointer;
+      -webkit-appearance: none;
+    }
+
+    .volume-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 12px;
+      height: 12px;
+      background: #c7c7ff;
+      cursor: pointer;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(199, 199, 255, 0.5);
+    }
+
+    .playlist {
+      max-height: 150px;
+      overflow-y: auto;
+      margin-top: 0.5rem;
+      padding-right: 0.5rem;
+    }
+
+    .playlist-item {
+      padding: 0.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .playlist-item:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .playlist-item.active {
+      background: rgba(199, 199, 255, 0.2);
+      color: #c7c7ff;
+    }
+
+    .file-upload {
+      margin-top: 0.5rem;
+      padding: 0.5rem;
+      border: 1px dashed rgba(255, 255, 255, 0.3);
+      border-radius: 6px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 0.8rem;
+    }
+
+    .file-upload:hover {
+      border-color: #c7c7ff;
+      background: rgba(199, 199, 255, 0.1);
+    }
+
+    .file-upload input {
+      display: none;
+    }
+
+    /* Pixel Art Characters */
+    .characters-container {
+      position: fixed;
+      bottom: 00;
+      left: 0;
+      right: 0;
+      height: 120px;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    .pixel-character {
+      position: absolute    ;
+      width: 100px;       /* frame genişliği + yan boşluk */
+  height: 140px;      /* frameHeight + kafa boşluğu + ayak boşluğu */
+  bottom: 0px;        /* ayaklar container tabanına oturacak */
+      cursor: pointer;
+      pointer-events: all;
+      transition: transform 0.2s ease;
+    }
+    
+
+    .pixel-character:hover {
+      transform: scale(1.1);
+    }
+
+    .pixel-character.samurai {
+      left: 150px;
+    }
+
+    .pixel-character.fighter {
+      right: 150px;
+    }
+
+   .character-sprite {
+  width: 100px;
+  height: 200px;
+  display: block;
+  image-rendering: pixelated;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+}
+
+
+    
+
+    /* Site Brand */
+    .site-brand {
+      position: fixed;
+      left: 1rem;
+      bottom: 1rem;
+      z-index: 120;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      align-items: flex-start;
+      pointer-events: auto;
+      transform-origin: left bottom;
+    }
+
+    .site-credit {
+      color: rgba(199, 199, 255, 0.95);
+      font-size: 1rem;
+      font-family: 'Righteous', 'Nunito', sans-serif;
+      letter-spacing: 0.6px;
+      background: rgba(255,255,255,0.02);
+      padding: 6px 12px;
+      border-radius: 10px;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.28);
+      text-transform: none;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 0 20px rgba(199, 199, 255, 0.4);
+      }
+      50% {
+        box-shadow: 0 0 40px rgba(199, 199, 255, 0.8);
+      }
+    }
+
+    /* Motivation Popup */
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(199, 199, 255, 0.1);
+      border: 1px solid rgba(199, 199, 255, 0.3);
+      padding: 2rem;
+      border-radius: 12px;
+      color: #c7c7ff;
+      font-size: 1.2rem;
+      text-align: center;
+      z-index: 1000;
+      animation: popupAppear 0.5s ease, popupDisappear 0.5s ease 2.5s forwards;
+      max-width: 90%;
+      box-shadow: 0 0 30px rgba(199, 199, 255, 0.2);
+      backdrop-filter: blur(6px);
+    }
+
+    @keyframes popupAppear {
+      from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+
+    @keyframes popupDisappear {
+      from {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+      to {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+      }
+    }
+
+    /* Responsive Design */
     @media (max-width: 800px) {
       .sticky-note-wrapper {
         width: 120px !important;
@@ -583,9 +780,45 @@
         font-size: 0.75rem;
         padding: 28px 8px 8px 8px;
       }
+
+      .color-picker {
+        flex-wrap: wrap;
+        max-width: 90vw;
+      }
+
+      .music-controls {
+        width: 280px;
+      }
+
+  .characters-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 160px;       /* üst+alt boşluk */
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.pixel-character {
+  position: absolute;
+  bottom: 0;
+  width: 100px;        /* tek frame genişliği */
+  height: 140px;       /* frame yüksekliği + boşluk */
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.character-sprite {
+  width: 100px;
+  height: 140px;
+  image-rendering: pixelated;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+}
+
     }
 
-    /* Responsive Design */
     @media (max-width: 600px) {
       body {
         padding: 1rem;
@@ -622,14 +855,24 @@
         right: 1rem;
       }
 
-      .music-toggle {
-        width: 45px;
-        height: 45px;
-        font-size: 1.2rem;
+      .music-player-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
       }
 
-      .music-player:hover .volume-control {
-        width: 100px;
+      .music-controls {
+        width: 250px;
+        right: -10px;
+      }
+
+      .site-brand {
+        left: 0.6rem;
+        bottom: 0.6rem;
+      }
+
+      .site-credit {
+        font-size: 0.8rem;
       }
 
       .popup {
@@ -637,72 +880,20 @@
         font-size: 1rem;
         max-width: 85%;
       }
-    }
-    /* Site credit + Instagram link container */
-    .site-brand {
-      position: fixed;
-      left: 1rem;
-      bottom: 1rem;
-      z-index: 120;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      align-items: flex-start;
-      pointer-events: auto;
-      transform-origin: left bottom;
-    }
 
-    .site-link {
-      font-family: 'Righteous', 'Nunito', sans-serif;
-      font-size: 0.95rem;
-      color: rgba(199, 199, 255, 0.95);
-      text-decoration: none;
-      background: rgba(255,255,255,0.02);
-      padding: 4px 10px;
-      border-radius: 8px;
-      backdrop-filter: blur(4px);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.28);
-      transition: transform 0.12s ease, background 0.12s ease;
-    }
+      /* .pixel-character {
+        width: 50px;
+        height: 50px;
+        bottom: 10px;
+      }
 
-    .site-link:hover {
-      transform: translateY(-2px);
-      background: rgba(255,255,255,0.04);
-    }
+      .pixel-character.samurai {
+        left: 60px;
+      }
 
-    .site-credit {
-      color: rgba(199, 199, 255, 0.95);
-      font-size: 1rem;
-      font-family: 'Righteous', 'Nunito', sans-serif;
-      letter-spacing: 0.6px;
-      background: rgba(255,255,255,0.02);
-      padding: 6px 12px;
-      border-radius: 10px;
-      backdrop-filter: blur(4px);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.28);
-      text-transform: none;
-    }
-
-    /* When the link is placed inside the credit, keep it inline and subtle */
-    .site-credit .site-link {
-      background: transparent;
-      padding: 0;
-      box-shadow: none;
-      border-radius: 0;
-      color: rgba(199, 199, 255, 0.95);
-      text-decoration: none;
-    }
-
-    .site-credit .site-link:hover {
-      transform: none;
-      text-decoration: underline;
-      background: transparent;
-    }
-
-    @media (max-width: 600px) {
-      .site-brand { left: 0.6rem; bottom: 0.6rem; }
-      .site-credit { font-size: 0.8rem; }
-      .site-link { font-size: 0.82rem; }
+      .pixel-character.fighter {
+        right: 60px;
+      } */
     }
   </style>
 </head>
@@ -729,29 +920,68 @@
 
     <footer>
       <p>melek 💜 oguz</p>
-    
     </footer>
   </div>
 
-  <!-- Music Player -->
+  <!-- Enhanced Color Picker for Sticky Notes -->
+  <div class="color-picker">
+    <div class="color-option selected" data-color="#FFB6C1" style="background: linear-gradient(135deg, #FFB6C1 0%, #FFD4E5 100%);"></div>
+    <div class="color-option" data-color="#87CEEB" style="background: linear-gradient(135deg, #87CEEB 0%, #B0E0E6 100%);"></div>
+    <div class="color-option" data-color="#98FB98" style="background: linear-gradient(135deg, #98FB98 0%, #90EE90 100%);"></div>
+    <div class="color-option" data-color="#DDA0DD" style="background: linear-gradient(135deg, #DDA0DD 0%, #DA70D6 100%);"></div>
+    <div class="color-option" data-color="#F0E68C" style="background: linear-gradient(135deg, #F0E68C 0%, #FFFFE0 100%);"></div>
+    <div class="color-option" data-color="#FFB347" style="background: linear-gradient(135deg, #FFB347 0%, #FFA500 100%);"></div>
+    <div class="color-option" data-color="#FF6961" style="background: linear-gradient(135deg, #FF6961 0%, #FF5F5F 100%);"></div>
+    <button class="add-note-btn" id="add-note-btn">📝 Not Ekle</button>
+  </div>
+
+  <!-- Enhanced Music Player -->
   <div class="music-player">
-    <div class="volume-control">
-      <input type="range" id="volume-slider" class="volume-slider" min="0" max="100" value="15" />
-      <span class="volume-label" id="volume-label">15</span>
+    <button class="music-player-icon" id="music-player-icon">🎵</button>
+    <div class="music-controls" id="music-controls">
+      <div class="control-row">
+        <button class="control-btn" id="prev-btn">⏮</button>
+        <button class="control-btn play-btn" id="play-btn">▶</button>
+        <button class="control-btn" id="next-btn">⏭</button>
+        <div class="time-display" id="time-display">0:00 / 0:00</div>
+      </div>
+      <div class="control-row">
+        <div class="seek-bar" id="seek-bar">
+          <div class="seek-progress" id="seek-progress"></div>
+        </div>
+      </div>
+      <div class="volume-control">
+        <span>🔊</span>
+        <input type="range" id="volume-slider" class="volume-slider" min="0" max="100" value="50">
+        <span id="volume-label">50</span>
+      </div>
+      <div class="playlist" id="playlist"></div>
+      <div class="file-upload" id="file-upload">
+        <input type="file" id="audio-upload" accept="audio/*" multiple>
+        📁 MP3 Dosyası Yükle
+      </div>
     </div>
-    <button class="music-toggle" id="music-toggle" title="Müzik Aç/Kapat">🎵</button>
-    <audio id="lofi-music" loop autoplay preload="auto">
-      <source src="https://cdn.pixabay.com/download/audio/2025/06/18/audio_59e7bd8f8d.mp3?filename=lofi-relax-beat-loop-bpm-88-eb-major-ii-v-i-361752.mp3" type="audio/mpeg">
-    </audio>
+    <audio id="audio-player" preload="metadata"></audio>
   </div>
 
-  <!-- Site credit (bottom-left) with Instagram link inside name -->
+  <!-- Pixel Art Characters Container 
+
+<div class="characters-container">
+  <div id="samurai-character" class="pixel-character">
+    <div class="character-sprite"></div>
+  </div>
+  <div id="fighter-character" class="pixel-character">
+    <div class="character-sprite"></div>
+  </div>
+</div>
+-->
+  </div>
+
+  <!-- Site Brand -->
   <div class="site-brand">
-    <div class="site-credit">Made by <a class="site-link" href="https://www.instagram.com/oguzctnkyy" target="_blank" rel="noopener noreferrer"><strong>kreaz</strong></a></div>
+    <div class="site-credit">Made by <a href="https://www.instagram.com/oguzctnkyy" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;"><strong>kreaz</strong></a></div>
   </div>
 
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
   <script>
     // ============================================
     // PARTICLE EFFECTS - Lo-Fi Atmosphere
@@ -763,7 +993,6 @@
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    // Particle class for floating effect
     class Particle {
       constructor() {
         this.x = Math.random() * canvas.width;
@@ -790,7 +1019,6 @@
       }
     }
 
-    // Initialize particles
     function initParticles() {
       particles = [];
       for (let i = 0; i < 50; i++) {
@@ -798,7 +1026,6 @@
       }
     }
 
-    // Animate particles
     function animateParticles() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
@@ -810,7 +1037,6 @@
       requestAnimationFrame(animateParticles);
     }
 
-    // Handle window resize
     window.addEventListener('resize', () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
@@ -820,298 +1046,516 @@
     animateParticles();
 
     // ============================================
-    // FIREBASE (Realtime Database) - Public Notes
-    // Replace the placeholder values with your Firebase project's config.
-    // Instructions: create a Firebase project, enable Realtime Database,
-    // set rules to allow public read/write (or configure auth as needed),
-    // then paste your project's config below.
+    // ENHANCED STICKY NOTES SYSTEM
     // ============================================
-    const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-      databaseURL: "https://YOUR_PROJECT_ID.firebaseio.com",
-      projectId: "YOUR_PROJECT_ID",
-      storageBucket: "YOUR_PROJECT_ID.appspot.com",
-      messagingSenderId: "SENDER_ID",
-      appId: "APP_ID"
-    };
+    const notesContainer = document.getElementById('sticky-notes-container');
+    const colorOptions = document.querySelectorAll('.color-option');
+    const addNoteBtn = document.getElementById('add-note-btn');
+    let notes = JSON.parse(localStorage.getItem('stickyNotes')) || [];
+    let selectedColor = '#FFB6C1';
+    let draggedNoteId = null;
+    let dragOffsetX = 0;
+    let dragOffsetY = 0;
 
-    try {
-      if (!firebase.apps?.length) {
-        firebase.initializeApp(firebaseConfig);
+    // Color picker functionality
+    colorOptions.forEach(option => {
+      option.addEventListener('click', () => {
+        colorOptions.forEach(opt => opt.classList.remove('selected'));
+        option.classList.add('selected');
+        selectedColor = option.dataset.color;
+      });
+    });
+
+    function getGradientFromColor(color) {
+      const gradients = {
+        '#FFB6C1': 'linear-gradient(135deg, #FFB6C1 0%, #FFD4E5 100%)',
+        '#87CEEB': 'linear-gradient(135deg, #87CEEB 0%, #B0E0E6 100%)',
+        '#98FB98': 'linear-gradient(135deg, #98FB98 0%, #90EE90 100%)',
+        '#DDA0DD': 'linear-gradient(135deg, #DDA0DD 0%, #DA70D6 100%)',
+        '#F0E68C': 'linear-gradient(135deg, #F0E68C 0%, #FFFFE0 100%)',
+        '#FFB347': 'linear-gradient(135deg, #FFB347 0%, #FFA500 100%)',
+        '#FF6961': 'linear-gradient(135deg, #FF6961 0%, #FF5F5F 100%)'
+      };
+      return gradients[color] || gradients['#FFB6C1'];
+    }
+
+    function getInitialPosition() {
+      const existingNotes = notes.length;
+      const spacing = 170;
+      const margin = 20;
+      
+      return {
+        left: margin + (existingNotes % 3) * (150 + margin),
+        top: margin + Math.floor(existingNotes / 3) * (150 + margin)
+      };
+    }
+
+    function constrainPosition(left, top, width, height) {
+      const margin = 10;
+      left = Math.max(margin, Math.min(left, window.innerWidth - width - margin));
+      top = Math.max(margin, Math.min(top, window.innerHeight - height - margin));
+      return { left, top };
+    }
+
+    function createNoteElement(noteData) {
+      const size = noteData.expanded ? 300 : 150;
+      const { left, top } = constrainPosition(noteData.left, noteData.top, size, size);
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'sticky-note-wrapper';
+      wrapper.dataset.noteId = noteData.id;
+      wrapper.style.cssText = `
+        left: ${left}px;
+        top: ${top}px;
+        width: ${size}px;
+        height: ${size}px;
+      `;
+
+      const textarea = document.createElement('textarea');
+      textarea.className = 'sticky-note';
+      textarea.value = noteData.text;
+      textarea.placeholder = 'Notunu buraya yaz...';
+      textarea.style.background = getGradientFromColor(noteData.color);
+
+      textarea.addEventListener('input', (e) => {
+        updateNoteData(noteData.id, { text: e.target.value });
+      });
+
+      const controls = document.createElement('div');
+      controls.className = 'sticky-note-controls';
+
+      const expandBtn = document.createElement('button');
+      expandBtn.className = 'sticky-note-btn sticky-note-expand';
+      expandBtn.textContent = noteData.expanded ? '−' : '+';
+      expandBtn.title = noteData.expanded ? 'Küçült' : 'Büyüt';
+      expandBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        updateNoteData(noteData.id, { expanded: !noteData.expanded });
+        saveNotes();
+        renderNotes();
+      });
+
+      const closeBtn = document.createElement('button');
+      closeBtn.className = 'sticky-note-btn sticky-note-close';
+      closeBtn.textContent = '✕';
+      closeBtn.title = 'Sil';
+      closeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        deleteNote(noteData.id);
+      });
+
+      controls.appendChild(expandBtn);
+      controls.appendChild(closeBtn);
+
+      wrapper.addEventListener('mousedown', (e) => {
+        if (e.target.closest('.sticky-note-btn') || e.target.closest('.sticky-note-controls')) return;
+        draggedNoteId = noteData.id;
+        const rect = wrapper.getBoundingClientRect();
+        dragOffsetX = e.clientX - rect.left;
+        dragOffsetY = e.clientY - rect.top;
+        wrapper.style.zIndex = '1000';
+      });
+
+      wrapper.appendChild(textarea);
+      wrapper.appendChild(controls);
+
+      return wrapper;
+    }
+
+    function saveNotes() {
+      localStorage.setItem('stickyNotes', JSON.stringify(notes));
+    }
+
+    function updateNoteData(id, data) {
+      const note = notes.find(n => n.id === id);
+      if (note) {
+        Object.assign(note, data);
+        saveNotes();
       }
-      var db = firebase.database();
-      var publicNotesRef = db.ref('publicNotes/notes');
-    } catch (err) {
-      console.warn('Firebase init failed (replace config placeholders):', err);
     }
+
+    function deleteNote(id) {
+      notes = notes.filter(n => n.id !== id);
+      saveNotes();
+      renderNotes();
+    }
+
+    function renderNotes() {
+      notesContainer.innerHTML = '';
+      notes.forEach(noteData => {
+        const wrapper = createNoteElement(noteData);
+        notesContainer.appendChild(wrapper);
+      });
+    }
+
+    function addNote() {
+      const position = getInitialPosition();
+      const newNote = {
+        id: Date.now().toString(),
+        text: '',
+        color: selectedColor,
+        left: position.left,
+        top: position.top,
+        expanded: false
+      };
+      notes.push(newNote);
+      saveNotes();
+      renderNotes();
+    }
+
+    // Event listeners
+    addNoteBtn.addEventListener('click', addNote);
+
+    document.addEventListener('mousemove', (e) => {
+      if (!draggedNoteId) return;
+      const wrapper = notesContainer.querySelector(`[data-note-id="${draggedNoteId}"]`);
+      if (!wrapper) return;
+
+      const note = notes.find(n => n.id === draggedNoteId);
+      if (!note) return;
+
+      const size = note.expanded ? 300 : 150;
+      let left = e.clientX - dragOffsetX;
+      let top = e.clientY - dragOffsetY;
+      const { left: constrainedLeft, top: constrainedTop } = constrainPosition(left, top, size, size);
+
+      wrapper.style.left = constrainedLeft + 'px';
+      wrapper.style.top = constrainedTop + 'px';
+    });
+
+    document.addEventListener('mouseup', () => {
+      if (draggedNoteId) {
+        const wrapper = notesContainer.querySelector(`[data-note-id="${draggedNoteId}"]`);
+        if (wrapper) {
+          const left = parseInt(wrapper.style.left) || 0;
+          const top = parseInt(wrapper.style.top) || 0;
+          updateNoteData(draggedNoteId, { left, top });
+          wrapper.style.zIndex = '';
+        }
+        draggedNoteId = null;
+      }
+    });
+
+    // Initialize notes
+    renderNotes();
 
     // ============================================
-// STICKY NOTES SYSTEM - FIXED INPUT ISSUE
-// ============================================
-const notesContainer = document.getElementById('sticky-notes-container');
-let notes = [];
+    // ENHANCED MUSIC PLAYER SYSTEM
+    // ============================================
+    const musicPlayerIcon = document.getElementById('music-player-icon');
+    const musicControls = document.getElementById('music-controls');
+    const audioPlayer = document.getElementById('audio-player');
+    const playBtn = document.getElementById('play-btn');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const seekBar = document.getElementById('seek-bar');
+    const seekProgress = document.getElementById('seek-progress');
+    const timeDisplay = document.getElementById('time-display');
+    const volumeSlider = document.getElementById('volume-slider');
+    const volumeLabel = document.getElementById('volume-label');
+    const playlist = document.getElementById('playlist');
+    const fileUpload = document.getElementById('file-upload');
+    const audioUpload = document.getElementById('audio-upload');
 
-// Firebase listener (optional)
-if (typeof publicNotesRef !== 'undefined') {
-  publicNotesRef.on('value', snapshot => {
-    const data = snapshot.val();
-    if (!data) notes = [];
-    else if (Array.isArray(data)) notes = data;
-    else notes = Object.keys(data).map(k => data[k]);
-    renderNotes();
-  }, err => console.warn('Firebase read failed', err));
-} else {
-  notes = JSON.parse(localStorage.getItem('stickyNotes')) || [];
-}
+    let isPlaying = false;
+    let currentTrackIndex = 0;
+    let playlistItems = [
+      {
+        name: 'Lo-Fi Relax Beat',
+        url: 'https://cdn.pixabay.com/download/audio/2025/06/18/audio_59e7bd8f8d.mp3?filename=lofi-relax-beat-loop-bpm-88-eb-major-ii-v-i-361752.mp3'
+      }
+    ];
 
-let draggedNoteId = null;
-let dragOffsetX = 0;
-let dragOffsetY = 0;
-
-// === DATA MANAGEMENT ===
-function saveNotes() {
-  if (typeof publicNotesRef !== 'undefined') {
-    const obj = {};
-    notes.forEach(n => obj[n.id] = n);
-    publicNotesRef.set(obj).catch(err => console.warn('Firebase write failed', err));
-  } else {
-    localStorage.setItem('stickyNotes', JSON.stringify(notes));
-  }
-}
-
-function getNoteById(id) {
-  return notes.find(n => n.id === id);
-}
-
-function updateNoteData(id, data) {
-  const note = getNoteById(id);
-  if (note) {
-    Object.assign(note, data);
-    saveNotes();
-  }
-}
-
-function deleteNote(id) {
-  notes = notes.filter(n => n.id !== id);
-  saveNotes();
-  renderNotes();
-}
-
-// === POSITIONING ===
-function getInitialPosition(side) {
-  const notesOnSide = notes.filter(n => n.side === side);
-  const normalSize = 150;
-  const baseTop = 140;
-  const stackSpacing = 170;
-
-  if (side === 'left-side') {
-    return { left: 16, top: baseTop + (notesOnSide.length * stackSpacing) };
-  } else {
-    return { left: Math.max(16, window.innerWidth - normalSize - 16), top: baseTop + (notesOnSide.length * stackSpacing) };
-  }
-}
-
-function constrainPosition(left, top, width, height) {
-  const margin = 10;
-  left = Math.max(margin, Math.min(left, window.innerWidth - width - margin));
-  top = Math.max(margin, Math.min(top, window.innerHeight - height - margin));
-  return { left, top };
-}
-
-// === DOM CREATION ===
-function createNoteElement(noteData) {
-  const size = noteData.expanded ? 300 : 150;
-  const { left, top } = constrainPosition(noteData.left, noteData.top, size, size);
-
-  const wrapper = document.createElement('div');
-  wrapper.className = 'sticky-note-wrapper';
-  wrapper.dataset.noteId = noteData.id;
-  wrapper.style.cssText = `
-    left: ${left}px;
-    top: ${top}px;
-    width: ${size}px;
-    height: ${size}px;
-    position: absolute;
-  `;
-
-  const textarea = document.createElement('textarea');
-  textarea.className = `sticky-note ${noteData.side}`;
-  textarea.value = noteData.text;
-  textarea.placeholder = noteData.side === 'left-side' ? 'burayi doldurmayi unutmaa' : 'hey sen burayi doldur';
-
-  // <<< DÜZELTME: Sadece text'i güncelle, render çağırma >>>
- 
-
-  const controls = document.createElement('div');
-  controls.className = 'sticky-note-controls';
-  controls.style.cssText = `position: absolute; top: 8px; right: 8px;`;
-
-  const expandBtn = document.createElement('button');
-  expandBtn.className = 'sticky-note-btn sticky-note-expand';
-  expandBtn.textContent = noteData.expanded ? '−' : '+';
-  expandBtn.title = noteData.expanded ? 'Küçült' : 'Büyüt';
-  expandBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    updateNoteData(noteData.id, { expanded: !noteData.expanded });
-    renderNotes();
-  });
-
-  const closeBtn = document.createElement('button');
-  closeBtn.className = 'sticky-note-btn sticky-note-close';
-  closeBtn.textContent = '✕';
-  closeBtn.title = 'Sil';
-  closeBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    deleteNote(noteData.id);
-  });
-
-  controls.appendChild(expandBtn);
-  controls.appendChild(closeBtn);
-
-  wrapper.addEventListener('mousedown', (e) => {
-    if (e.target.closest('.sticky-note-btn') || e.target.closest('.sticky-note-controls')) return;
-    draggedNoteId = noteData.id;
-    const rect = wrapper.getBoundingClientRect();
-    dragOffsetX = e.clientX - rect.left;
-    dragOffsetY = e.clientY - rect.top;
-  });
-
-  wrapper.appendChild(textarea);
-  wrapper.appendChild(controls);
-
-  return { wrapper, controls };
-}
-
-// === RENDERING ===
-function renderNotes() {
-  notesContainer.innerHTML = '';
-  notes.forEach(noteData => {
-    const { wrapper } = createNoteElement(noteData);
-    notesContainer.appendChild(wrapper);
-  });
-}
-
-// === DRAG HANDLING ===
-document.addEventListener('mousemove', (e) => {
-  if (!draggedNoteId) return;
-  const wrapper = notesContainer.querySelector(`[data-note-id="${draggedNoteId}"]`);
-  if (!wrapper) return;
-
-  const note = getNoteById(draggedNoteId);
-  if (!note) return;
-
-  const size = note.expanded ? 300 : 150;
-  let left = e.clientX - dragOffsetX;
-  let top = e.clientY - dragOffsetY;
-  const { left: constrainedLeft, top: constrainedTop } = constrainPosition(left, top, size, size);
-
-  wrapper.style.left = constrainedLeft + 'px';
-  wrapper.style.top = constrainedTop + 'px';
-});
-
-document.addEventListener('mouseup', () => {
-  if (draggedNoteId) {
-    const wrapper = notesContainer.querySelector(`[data-note-id="${draggedNoteId}"]`);
-    if (wrapper) {
-      const left = parseInt(wrapper.style.left) || 0;
-      const top = parseInt(wrapper.style.top) || 0;
-      updateNoteData(draggedNoteId, { left, top });
+    // Load saved playlist from localStorage
+    const savedPlaylist = localStorage.getItem('musicPlaylist');
+    if (savedPlaylist) {
+      try {
+        const parsed = JSON.parse(savedPlaylist);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          playlistItems = parsed;
+        }
+      } catch (e) {
+        console.log('Could not load saved playlist');
+      }
     }
-    draggedNoteId = null;
-  }
-});
 
-// === ADD NOTE FUNCTION ===
-function addNote(side) {
-  const position = getInitialPosition(side);
-  const newNote = {
-    id: Date.now().toString(),
-    text: '',
-    side: side,
-    left: position.left,
-    top: position.top,
-    expanded: false
-  };
-  notes.push(newNote);
-  saveNotes();
-  renderNotes();
-}
+    function savePlaylist() {
+      localStorage.setItem('musicPlaylist', JSON.stringify(playlistItems));
+    }
 
-// === INITIALIZATION ===
-renderNotes();
+    function toggleMusicControls() {
+      musicControls.classList.toggle('active');
+    }
 
-// === CREATE ADD NOTE BUTTONS ===
-const noteButtonsDiv = document.createElement('div');
-noteButtonsDiv.style.cssText = `
-  position: fixed;
-  bottom: 6rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 50;
-  display: flex;
-  gap: 1rem;
-  animation: slideUp 0.8s ease;
-`;
+    function formatTime(seconds) {
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      return `${mins}:${secs.toString().padStart(2, '0')}`;
+    }
 
-const leftNoteBtn = document.createElement('button');
-leftNoteBtn.textContent = '📝 Pembe Not';
-leftNoteBtn.style.cssText = `
-  padding: 0.6rem 1.2rem;
-  background: #FFB6C1;
-  color: #333;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(255, 182, 193, 0.4);
-`;
-leftNoteBtn.addEventListener('click', () => addNote('left-side'));
-leftNoteBtn.addEventListener('mouseover', function() {
-  this.style.transform = 'scale(1.05)';
-  this.style.boxShadow = '0 4px 12px rgba(255, 182, 193, 0.6)';
-});
-leftNoteBtn.addEventListener('mouseout', function() {
-  this.style.transform = 'scale(1)';
-  this.style.boxShadow = '0 2px 8px rgba(255, 182, 193, 0.4)';
-});
+    function updatePlaylist() {
+      playlist.innerHTML = '';
+      playlistItems.forEach((item, index) => {
+        const playlistItem = document.createElement('div');
+        playlistItem.className = `playlist-item ${index === currentTrackIndex ? 'active' : ''}`;
+        playlistItem.innerHTML = `
+          <span>${item.name}</span>
+          ${index === currentTrackIndex ? (isPlaying ? '▶' : '⏸') : ''}
+        `;
+        playlistItem.addEventListener('click', () => {
+          currentTrackIndex = index;
+          loadTrack();
+          playTrack();
+        });
+        playlist.appendChild(playlistItem);
+      });
+    }
 
-const rightNoteBtn = document.createElement('button');
-rightNoteBtn.textContent = '📝 Mavi Not';
-rightNoteBtn.style.cssText = `
-  padding: 0.6rem 1.2rem;
-  background: #87CEEB;
-  color: #333;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(135, 206, 235, 0.4);
-`;
-rightNoteBtn.addEventListener('click', () => addNote('right-side'));
-rightNoteBtn.addEventListener('mouseover', function() {
-  this.style.transform = 'scale(1.05)';
-  this.style.boxShadow = '0 4px 12px rgba(135, 206, 235, 0.6)';
-});
-rightNoteBtn.addEventListener('mouseout', function() {
-  this.style.transform = 'scale(1)';
-  this.style.boxShadow = '0 2px 8px rgba(135, 206, 235, 0.4)';
-});
+    function loadTrack() {
+      if (playlistItems[currentTrackIndex]) {
+        audioPlayer.src = playlistItems[currentTrackIndex].url;
+        updatePlaylist();
+      }
+    }
 
-noteButtonsDiv.appendChild(leftNoteBtn);
-noteButtonsDiv.appendChild(rightNoteBtn);
-document.body.appendChild(noteButtonsDiv);
+    function playTrack() {
+      audioPlayer.play().then(() => {
+        isPlaying = true;
+        playBtn.textContent = '⏸';
+        musicPlayerIcon.classList.add('playing');
+        updatePlaylist();
+      }).catch(err => {
+        console.log('Playback failed:', err);
+      });
+    }
+
+    function pauseTrack() {
+      audioPlayer.pause();
+      isPlaying = false;
+      playBtn.textContent = '▶';
+      musicPlayerIcon.classList.remove('playing');
+      updatePlaylist();
+    }
+
+    function togglePlay() {
+      if (isPlaying) {
+        pauseTrack();
+      } else {
+        playTrack();
+      }
+    }
+
+    function nextTrack() {
+      currentTrackIndex = (currentTrackIndex + 1) % playlistItems.length;
+      loadTrack();
+      playTrack();
+    }
+
+    function prevTrack() {
+      currentTrackIndex = currentTrackIndex === 0 ? playlistItems.length - 1 : currentTrackIndex - 1;
+      loadTrack();
+      playTrack();
+    }
+
+    // Event listeners
+    musicPlayerIcon.addEventListener('click', toggleMusicControls);
+    playBtn.addEventListener('click', togglePlay);
+    prevBtn.addEventListener('click', prevTrack);
+    nextBtn.addEventListener('click', nextTrack);
+
+    audioPlayer.addEventListener('loadedmetadata', () => {
+      timeDisplay.textContent = `0:00 / ${formatTime(audioPlayer.duration)}`;
+    });
+
+    audioPlayer.addEventListener('timeupdate', () => {
+      const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+      seekProgress.style.width = progress + '%';
+      timeDisplay.textContent = `${formatTime(audioPlayer.currentTime)} / ${formatTime(audioPlayer.duration)}`;
+    });
+
+    audioPlayer.addEventListener('ended', () => {
+      nextTrack();
+    });
+
+    seekBar.addEventListener('click', (e) => {
+      const rect = seekBar.getBoundingClientRect();
+      const percent = (e.clientX - rect.left) / rect.width;
+      audioPlayer.currentTime = percent * audioPlayer.duration;
+    });
+
+    volumeSlider.addEventListener('input', (e) => {
+      const volume = e.target.value;
+      audioPlayer.volume = volume / 100;
+      volumeLabel.textContent = volume;
+    });
+
+    fileUpload.addEventListener('click', () => {
+      audioUpload.click();
+    });
+
+    audioUpload.addEventListener('change', (e) => {
+      const files = Array.from(e.target.files);
+      files.forEach(file => {
+        if (file.type.startsWith('audio/')) {
+          const url = URL.createObjectURL(file);
+          playlistItems.push({
+            name: file.name.replace(/\.[^/.]+$/, ""),
+            url: url
+          });
+        }
+      });
+      savePlaylist();
+      updatePlaylist();
+      
+      // If this is the first track, load and play it
+      if (playlistItems.length === files.length) {
+        currentTrackIndex = 0;
+        loadTrack();
+        playTrack();
+      }
+    });
+
+    // Initialize
+    volumeSlider.value = 50;
+    audioPlayer.volume = 0.5;
+    updatePlaylist();
+    loadTrack();
+
+// ============================================
+// PIXEL ART CHARACTERS SYSTEM - READY SPRITE SHEET VERSION
+// ============================================
+//*
+// class PixelCharacter {
+//   constructor(elementId, characterType, frameWidth, frameHeight, animationsObj) {
+//     this.element = document.getElementById(elementId);
+//     this.sprite = this.element.querySelector('.character-sprite');
+//     this.characterType = characterType.toLowerCase();
+//     this.frameWidth = frameWidth;
+//     this.frameHeight = frameHeight;
+//     this.animations = animationsObj;  // animasyon frame sayıları
+//     this.currentAnimation = 'idle';
+//     this.currentFrame = 0;
+//     this.isAttacking = false;
+//     this.position = parseInt(this.element.style.left) || (this.characterType==='samurai'?150:window.innerWidth-230);
+//     this.direction = Math.random() > 0.5 ? 1 : -1;
+
+//     this.init();
+//   }
+
+//   init() {
+//     this.startAnimation('idle');
+//     this.startBehavior();
+
+//     this.element.addEventListener('click', () => {
+//       if (!this.isAttacking) this.triggerAttack();
+//     });
+//   }
+
+//   getFramePath(animation) {
+//   return `/assets/characters/${this.characterType}/${animation}.png`;
+// }
+
+
+//   startAnimation(animation) {
+//     if (this.isAttacking && animation !== 'attack_1' && animation !== 'attack_2') return;
+
+//     this.currentAnimation = animation;
+//     this.currentFrame = 0;
+
+//     if (this.animationInterval) clearInterval(this.animationInterval);
+
+//     const totalFrames = this.animations[this.characterType][animation];
+//     const frameDuration = 100; // ms
+
+//     this.animationInterval = setInterval(() => {
+//       this.currentFrame = (this.currentFrame + 1) % totalFrames;
+//       this.updateSprite();
+//     }, frameDuration);
+//   }
+
+//   updateSprite() {
+//     const totalFrames = this.animations[this.characterType][this.currentAnimation];
+//     const offsetX = this.currentFrame * this.frameWidth;
+
+//     this.sprite.style.backgroundImage = `url('${this.getFramePath(this.currentAnimation)}')`;
+//     this.sprite.style.backgroundPosition = `-${offsetX}px 0px`;
+//     this.sprite.style.width = `${this.frameWidth}px`;
+//     this.sprite.style.height = `${this.frameHeight}px`;
+//     this.sprite.style.backgroundSize = `${this.frameWidth * totalFrames}px ${this.frameHeight}px`;
+//     this.sprite.style.transform = this.direction < 0 ? 'scaleX(-1)' : 'scaleX(1)';
+//   }
+
+//   move() {
+//     if (this.isAttacking) return;
+
+//     const speed = this.currentAnimation==='run'?3:1.5;
+//     this.position += this.direction * speed;
+
+//     const minPos = 0;
+//     const maxPos = window.innerWidth - this.frameWidth;
+//     if (this.position <= minPos || this.position >= maxPos) this.direction *= -1;
+
+//     this.element.style.left = `${this.position}px`;
+//   }
+
+//   triggerAttack() {
+//     this.isAttacking = true;
+//     const attackType = Math.random()>0.5?'attack_1':'attack_2';
+//     this.startAnimation(attackType);
+
+//     // attack bittiğinde idle dön
+//     setTimeout(()=>{this.isAttacking=false; this.startAnimation('idle');}, 600);
+//   }
+
+//   startBehavior() {
+//     const behaviors = ['idle','walk','run'];
+//     const weights = [0.5,0.3,0.2];
+
+//     const chooseBehavior = () => {
+//       const r=Math.random();
+//       let cum=0;
+//       for(let i=0;i<behaviors.length;i++){
+//         cum+=weights[i];
+//         if(r<cum) return behaviors[i];
+//       }
+//       return 'idle';
+//     };
+
+//     const loop = ()=>{
+//       const behavior = chooseBehavior();
+//       this.startAnimation(behavior);
+
+//       if(behavior!=='idle'){
+//         const step=()=>{
+//           if(this.currentAnimation===behavior){this.move(); requestAnimationFrame(step);}
+//         };
+//         requestAnimationFrame(step);
+//       }
+
+//       setTimeout(loop, Math.random()*3000+2000);
+//     };
+
+//     loop();
+//   }
+// }
+
+// // Animasyon frame sayıları
+// const animationsObj = {
+//   samurai: { attack_1:6, attack_2:3, idle:6, walk:8, run:8 },
+//   fighter: { attack_1:4, attack_2:4, idle:6, walk:8, run:8 }
+// };
+
+// // Karakterleri başlat
+// const samurai = new PixelCharacter('samurai-character','samurai',80,140,animationsObj);
+// const fighter = new PixelCharacter('fighter-character','fighter',80,140,animationsObj);
 
 
     // ============================================
     // MOTIVATION MESSAGES
     // ============================================
     const motivationalMessages = [
-
       "harikasinn",
-      "ne demek yaptin",
+      "ne demek yaptin", 
       "bu da bitti biraz mola ver",
       "oha gercekten yaptin mi"
     ];
@@ -1123,13 +1567,11 @@ document.body.appendChild(noteButtonsDiv);
       "bir adim daha yaklastinn"
     ];
 
-    // Display random quote on page load
     function displayRandomQuote() {
       const quote = pageQuotes[Math.floor(Math.random() * pageQuotes.length)];
       document.getElementById("quote").textContent = quote;
     }
 
-    // Show motivation popup
     function showMotivationPopup() {
       const message = motivationalMessages[Math.floor(Math.random() * motivationalMessages.length)];
       const popup = document.createElement('div');
@@ -1137,272 +1579,102 @@ document.body.appendChild(noteButtonsDiv);
       popup.textContent = message;
       document.body.appendChild(popup);
 
-      // Remove popup after animation
       setTimeout(() => popup.remove(), 3000);
     }
-// ============================================
+
+    // ============================================
     // TO-DO LIST FUNCTIONALITY
     // ============================================
-// TODO LIST FUNCTIONALITY // ============================================ 
-const input = document.getElementById("todo-input"); 
-const addBtn = document.getElementById("add-btn"); 
-const list = document.getElementById("todo-list"); 
-// Load todos from localStorage
- let todos = JSON.parse(localStorage.getItem("todos")) || [];
- function renderTodos() { list.innerHTML = "";
- if (todos.length === 0) { const emptyMsg = document.createElement("li");
- emptyMsg.textContent = "Henüz görev eklemedin. Başla! 🚀";
- emptyMsg.style.textAlign = "center";
- emptyMsg.style.opacity = "0.6";
- emptyMsg.style.cursor = "default";
- emptyMsg.style.background = "transparent";
- emptyMsg.style.borderLeft = "none";
- emptyMsg.style.boxShadow = "none";
- list.appendChild(emptyMsg);
- return;
- } todos.forEach((todo, index) => { const li = document.createElement("li");
- const span = document.createElement("span");
- span.textContent = todo.text;
- li.appendChild(span);
- if (todo.completed) { li.classList.add("completed"); }
- // Delete button
- const delBtn = document.createElement("button");
- delBtn.textContent = "✕";
- delBtn.title = "Sil";
- delBtn.addEventListener("click", (e) => { e.stopPropagation();
- todos.splice(index, 1);
- saveTodos(); renderTodos();
- }); 
-// Toggle completion on click 
-li.addEventListener("click", () => { todo.completed = !todo.completed;
- saveTodos();
- renderTodos();
- // Show motivation popup when task is completed 
-if (todo.completed) { showMotivationPopup();
- } }); li.appendChild(delBtn);
- list.appendChild(li); });
- } function saveTodos() { localStorage.setItem("todos", JSON.stringify(todos));
- } 
-// Add new todo 
-addBtn.addEventListener("click", () => { const text = input.value.trim();
- if (text === "") return;
- todos.push({ text, completed: false });
- saveTodos();
- renderTodos();
- input.value = ""; }); 
-// Add todo on Enter key 
-input.addEventListener("keypress", (e) => { if (e.key === "Enter") addBtn.click(); }); 
-// Initial render 
-displayRandomQuote(); 
-renderTodos();
-    
- // ============================================
-    // LOFI MUSIC PLAYER
-    // ============================================
-    const musicToggle = document.getElementById("music-toggle");
-    const lofiMusic = document.getElementById("lofi-music");
-    const volumeSlider = document.getElementById("volume-slider");
-    const volumeLabel = document.getElementById("volume-label");
-    let isPlaying = false;
+    const todoInput = document.getElementById("todo-input");
+    const addBtn = document.getElementById("add-btn");
+    const todoList = document.getElementById("todo-list");
+    let todos = JSON.parse(localStorage.getItem("todos")) || [];
 
-    // Ses seviyesini ayarla
-    volumeSlider.addEventListener("input", (e) => {
-      const volume = e.target.value;
-      lofiMusic.volume = volume / 100;
-      volumeLabel.textContent = volume;
+    function renderTodos() {
+      todoList.innerHTML = "";
       
-      // Müzik butonunda su seviyesi efekti
-      musicToggle.style.setProperty('--water-level', volume + '%');
-      
-      // Doğrudan pseudo-element'i güncellemek için
-      updateWaterLevel(volume);
-    });
+      if (todos.length === 0) {
+        const emptyMsg = document.createElement("li");
+        emptyMsg.textContent = "Henüz görev eklemedin. Başla! 🚀";
+        emptyMsg.style.textAlign = "center";
+        emptyMsg.style.opacity = "0.6";
+        emptyMsg.style.cursor = "default";
+        emptyMsg.style.background = "transparent";
+        emptyMsg.style.borderLeft = "none";
+        emptyMsg.style.boxShadow = "none";
+        todoList.appendChild(emptyMsg);
+        return;
+      }
 
-    // Su seviyesi güncellemesi için yardımcı fonksiyon
-    function updateWaterLevel(volume) {
-      // CSS değişkenini güncelle
-      const style = document.createElement('style');
-      style.textContent = `.music-toggle::before { height: ${volume}% !important; }`;
-      
-      // Eski style'ı sil
-      const oldStyle = document.getElementById('water-level-style');
-      if (oldStyle) oldStyle.remove();
-      
-      style.id = 'water-level-style';
-      document.head.appendChild(style);
+      todos.forEach((todo, index) => {
+        const li = document.createElement("li");
+        const span = document.createElement("span");
+        span.textContent = todo.text;
+        li.appendChild(span);
+        
+        if (todo.completed) {
+          li.classList.add("completed");
+        }
+
+        const delBtn = document.createElement("button");
+        delBtn.textContent = "✕";
+        delBtn.title = "Sil";
+        delBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          todos.splice(index, 1);
+          saveTodos();
+          renderTodos();
+        });
+
+        li.addEventListener("click", () => {
+          todo.completed = !todo.completed;
+          saveTodos();
+          renderTodos();
+          if (todo.completed) {
+            showMotivationPopup();
+          }
+        });
+
+        li.appendChild(delBtn);
+        todoList.appendChild(li);
+      });
     }
 
-    // Başlangıç ses seviyesi (başlangıçta 15)
-    lofiMusic.volume = 0.15;
-    updateWaterLevel(15);
-
-    // Müzik otomatik olarak başladığında başlasın
-    lofiMusic.load();
-    // Try to play immediately, then setup user interaction fallback
-    lofiMusic.play().catch(err => {
-      console.log("Autoplay failed:", err);
-      // Fallback: play on first user interaction
-      document.addEventListener('click', function playOnClick() {
-        lofiMusic.play().catch(e => console.log("Play on click failed:", e));
-        document.removeEventListener('click', playOnClick);
-      }, { once: true });
-    });
-    isPlaying = true;
-
-    // Ses kontrolü
-    volumeSlider.addEventListener("change", () => {
-      updateMusicButtonDisplay();
-    });
-
-    function updateMusicButtonDisplay() {
-      const volume = parseInt(volumeSlider.value);
-      if (volume === 0) {
-        musicToggle.textContent = '✕';
-        musicToggle.title = 'Ses kapalı';
-      } else {
-        musicToggle.textContent = '🎵';
-        musicToggle.title = 'Müzik çalıyor';
-      }
+    function saveTodos() {
+      localStorage.setItem("todos", JSON.stringify(todos));
     }
 
-    // Başlangıçta buton gösterimini ayarla
-    updateMusicButtonDisplay();
-
-    // Buton tıklaması (ses kontrolü)
-    musicToggle.addEventListener("click", () => {
-      const currentVolume = parseInt(volumeSlider.value);
-      if (currentVolume > 0) {
-        volumeSlider.value = 0;
-      } else {
-        volumeSlider.value = 50;
-      }
-      const event = new Event('input', { bubbles: true });
-      volumeSlider.dispatchEvent(event);
-      updateMusicButtonDisplay();
+    addBtn.addEventListener("click", () => {
+      const text = todoInput.value.trim();
+      if (text === "") return;
+      
+      todos.push({ text, completed: false });
+      saveTodos();
+      renderTodos();
+      todoInput.value = "";
     });
 
-    // Müzik bittiğinde otomatik olarak baştan başlat
-    lofiMusic.addEventListener("ended", () => {
-      lofiMusic.currentTime = 0;
-      if (isPlaying) {
-        lofiMusic.play().catch(err => console.log("Yeniden oynatma hatası:", err));
+    todoInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") addBtn.click();
+    });
+
+    // Initialize
+    displayRandomQuote();
+    renderTodos();
+
+    // Close music controls when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!musicPlayerIcon.contains(e.target) && !musicControls.contains(e.target)) {
+        musicControls.classList.remove('active');
       }
     });
 
-    // Müzik yüklendiğinde kontrol et
-    lofiMusic.addEventListener("canplay", () => {
-      console.log("Müzik hazır!");
-    });
-
-    lofiMusic.addEventListener("error", () => {
-      console.log("Müzik yüklenemedi. İnternet bağlantısını kontrol et.");
-    });
-    const title = document.querySelector("h1");
-
-// Sticky ve todo list container'ları
-const stickyContainer = document.getElementById("sticky-container");
-const todoContainer = document.getElementById("todo-list-container");
-
-title.addEventListener("click", (e) => {
-  if (e.target.textContent.includes("🌙")) {
-    startProposal();
-  }
-});
-
-function startProposal() {
-  // Sticky ve todo list gizle
-  if (stickyContainer) stickyContainer.style.display = "none";
-  if (todoContainer) todoContainer.style.display = "none";
-
-  // Soruyu ve butonları oluştur
-  const questionDiv = document.createElement("div");
-  questionDiv.id = "proposal-div";
-  questionDiv.style.textAlign = "center";
-  questionDiv.style.marginTop = "100px";
-
-  const question = document.createElement("h2");
-  question.textContent = "Benimle çıkar mısın? 💜";
-  questionDiv.appendChild(question);
-
-  const yesBtn = document.createElement("button");
-  yesBtn.textContent = "Evet";
-  yesBtn.style.fontSize = "20px";
-  yesBtn.style.marginRight = "20px";
-  yesBtn.style.transition = "all 0.3s ease";
-
-  const noBtn = document.createElement("button");
-  noBtn.textContent = "Hayır";
-  noBtn.style.fontSize = "20px";
-  noBtn.style.transition = "all 0.3s ease";
-
-  questionDiv.appendChild(yesBtn);
-  questionDiv.appendChild(noBtn);
-
-  document.body.appendChild(questionDiv);
-
-  // Mesaj kutusu ve yazılar
-  const messages = [
-    "bence yanlis tikladin",
-    "emin misin? 🥺",
-    "saka yapiyor olmalisin! 💔",
-    "NE DEMEK HAYİR!",
-    "bunu sen istedin"
-  ];
-  let messageIndex = 0;
-  let clickCount = 0;
-
-  // Hayır butonuna tıklama
-  noBtn.addEventListener("click", () => {
-    clickCount++;
-
-    // Evet butonunu büyüt
-    const currentSize = parseInt(yesBtn.style.fontSize);
-    yesBtn.style.fontSize = currentSize + 10 + "px";
-
-    // Mesaj kutusunu göster
-   // Mesaj kutusunu göster
-const msg = document.createElement("div");
-msg.className = "message-box";
-msg.innerText = messages[messageIndex];
-msg.style.position = "fixed";
-msg.style.top = "60%"; // Burayı 50%'den 60%'ye aldık
-msg.style.left = "50%";
-msg.style.transform = "translate(-50%, -50%)";
-msg.style.backgroundColor = "rgba(0,0,0,0.7)";
-msg.style.color = "white";
-msg.style.padding = "20px 30px";
-msg.style.borderRadius = "10px";
-msg.style.fontSize = "20px";
-msg.style.zIndex = "9999";
-document.body.appendChild(msg);
-
-    document.body.appendChild(msg);
-
-    setTimeout(() => {
-      msg.remove();
-    }, 2000);
-
-    // Bir sonraki mesajı sıraya al
-    messageIndex = (messageIndex + 1) % messages.length;
-
-    // 5. tıklamada ekranı tamamen kaplasın
-    if (clickCount === 5) {
-      yesBtn.style.position = "fixed";
-      yesBtn.style.top = "0";
-      yesBtn.style.left = "0";
-      yesBtn.style.width = "100vw";
-      yesBtn.style.height = "100vh";
-      yesBtn.style.fontSize = "10vw";
-      yesBtn.style.zIndex = "9999";
-      noBtn.remove();
-    }
-  });
-
-  // Evet butonuna tıklama
-  yesBtn.addEventListener("click", () => {
-    alert("EVET DİCEGİNİ BİLİYODUM ARTİK CİKİYORUZZ");
-  });
-}
+    console.log('🌙 Website Enhanced Successfully!');
+    console.log('📁 Remember to add PNG files for characters:');
+    console.log('   - Samurai: /assets/characters/samurai/');
+    console.log('   - Fighter: /assets/characters/fighter/');
+    console.log('🎨 Features: Sticky Notes with Color Picker, Advanced Music Player, Pixel Art Characters');
+    document.getElementById('fighter-character').querySelector('.character-sprite').style.backgroundImage
 
   </script>
 </body>
